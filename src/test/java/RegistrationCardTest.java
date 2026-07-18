@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
@@ -28,7 +29,7 @@ public class RegistrationCardTest {
         $("[data-test-id=name] input").setValue ("Иван Иванович Иванов");
         $("[data-test-id=phone] input") .setValue ("+79051234569");
         $("[data-test-id=agreement]") .click();
-        $(byText("Забронировать")).click();
+        $$("button").findBy(text("Забронировать")).click();
         $("div.notification__title").shouldHave(text("Успешно"), Duration.ofSeconds(15));
         $("div.notification__content").shouldHave(text("Встреча успешно забронирована на " + planningDate), Duration.ofSeconds(15));
 
